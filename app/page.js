@@ -1,6 +1,6 @@
 'use client'
 import { useEffect, useState } from "react"
-import Axios from "axios"
+import axios from "axios"
 
 export default function Home() {
   // Fact generator states
@@ -17,16 +17,16 @@ export default function Home() {
     generateExcuse()
   }, [])
   const handleUpdate = () => {
-    Axios("https://catfact.ninja/fact").
+    axios("https://catfact.ninja/fact").
       then(res => setFact(res.data.fact)).catch(console.log("Network error in fetching cat facts"))
   }
   const handleChange = () => {
-    Axios(`https://api.agify.io/?name=${name}`).
+    axios(`https://api.agify.io/?name=${name}`).
       then(res => setAge(res.data),
       ).catch(console.log("Network error in fetching age"))
   }
   const generateExcuse = () => {
-    Axios(`https://excuser-three.vercel.app/v1/excuse/${button}`).
+    axios(`https://excuser-three.vercel.app/v1/excuse/${button}`).
       then(res => setExcuse(res.data[0].excuse),
       ).catch(console.log("Network error in fetching excuse"))
   }
